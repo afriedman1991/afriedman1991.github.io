@@ -1,12 +1,15 @@
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: 'development',
-  entry: './src/js/canvas.js',
+  entry: {
+    gravity: './src/js/gravity.js',
+    growingCircles: './src/js/growingCircles.js'
+  },
   output: {
     path: __dirname + '/dist/',
-    filename: './js/canvas.bundle.js'
+    filename: './js/[name].bundle.js'
   },
   module: {
     rules: [
@@ -41,7 +44,13 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       favicon: 'favicon.ico',
-      template: 'src/index.html'
+      template: 'src/index.html',
+      chunks: ['gravity'] // Only include gravity.bundle.js in index.html
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'pages/growingCircles.html',
+      template: 'src/pages/growingCircles.html',
+      chunks: ['growingCircles'] // Only include growingCircles.bundle.js in growingCircles.html
     })
   ],
   watch: true,
