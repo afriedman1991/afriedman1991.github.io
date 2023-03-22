@@ -5,7 +5,8 @@ module.exports = {
   mode: 'development',
   entry: {
     gravity: './src/js/gravity.js',
-    growingCircles: './src/js/growingCircles.js'
+    growingCircles: './src/js/growingCircles.js',
+    collisionDetection: './src/js/collisionDetection.js'
   },
   output: {
     path: __dirname + '/dist/',
@@ -51,6 +52,11 @@ module.exports = {
       filename: 'pages/growingCircles.html',
       template: 'src/pages/growingCircles.html',
       chunks: ['growingCircles'] // Only include growingCircles.bundle.js in growingCircles.html
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'pages/collisionDetection.html',
+      template: 'src/pages/collisionDetection.html',
+      chunks: ['collisionDetection'] // Only include growingCircles.bundle.js in growingCircles.html
     })
   ],
   watch: true,
