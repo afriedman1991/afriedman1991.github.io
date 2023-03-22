@@ -214,10 +214,12 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 var canvas = document.querySelector('canvas');
+ // Get header element height
 
+var headerHeight = document.querySelector('header').offsetHeight;
 canvas.width = window.innerWidth; // set canvas width to window width
 
-canvas.height = window.innerHeight; // set canvas height to window height
+canvas.height = window.innerHeight - headerHeight; // set canvas height to window height
 
 var c = canvas.getContext('2d'); // c is the context
 // Mouse Event

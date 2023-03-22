@@ -5,8 +5,11 @@ import utilElasticCollision, { rotate, resolveCollision } from './utilElasticCol
 const canvas = document.querySelector('canvas');
 const c = canvas.getContext('2d');
 
-canvas.width = innerWidth
-canvas.height = innerHeight
+// Get header element height
+const headerHeight = document.querySelector('header').offsetHeight;
+
+canvas.width = innerWidth;
+canvas.height = innerHeight - headerHeight;
 
 const mouse = {
   x: innerWidth / 2,

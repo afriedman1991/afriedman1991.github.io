@@ -6,7 +6,8 @@ module.exports = {
   entry: {
     gravity: './src/js/gravity.js',
     growingCircles: './src/js/growingCircles.js',
-    collisionDetection: './src/js/collisionDetection.js'
+    collisionDetection: './src/js/collisionDetection.js',
+    spaceInvaders: './src/js/SpaceInvaders/spaceInvaders.js'
   },
   output: {
     path: __dirname + '/dist/',
@@ -28,9 +29,15 @@ module.exports = {
         test: /\.(png|jpe?g|gif)$/i,
         use: [
           {
-            loader: 'file-loader'
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'assets/images',
+              publicPath: '/assets/images'
+            }
           }
-        ]
+        ],
+        include: __dirname + '/src/js/SpaceInvaders/assets'
       }
     ]
   },
@@ -45,7 +52,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       favicon: 'favicon.ico',
-      template: 'src/index.html',
+      template: 'index.html',
       chunks: ['gravity'] // Only include gravity.bundle.js in index.html
     }),
     new HtmlWebpackPlugin({
@@ -57,6 +64,11 @@ module.exports = {
       filename: 'pages/collisionDetection.html',
       template: 'src/pages/collisionDetection.html',
       chunks: ['collisionDetection'] // Only include growingCircles.bundle.js in growingCircles.html
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'pages/spaceInvaders.html',
+      template: 'src/pages/spaceInvaders.html',
+      chunks: ['spaceInvaders'] // Only include growingCircles.bundle.js in growingCircles.html
     })
   ],
   watch: true,

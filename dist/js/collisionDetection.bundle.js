@@ -205,9 +205,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 
 var canvas = document.querySelector('canvas');
-var c = canvas.getContext('2d');
+var c = canvas.getContext('2d'); // Get header element height
+
+var headerHeight = document.querySelector('header').offsetHeight;
 canvas.width = innerWidth;
-canvas.height = innerHeight;
+canvas.height = innerHeight - headerHeight;
 var mouse = {
   x: innerWidth / 2,
   y: innerHeight / 2

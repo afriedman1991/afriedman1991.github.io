@@ -1,8 +1,11 @@
 let canvas = document.querySelector('canvas');
 import { Object } from './canvas';
 
+// Get header element height
+const headerHeight = document.querySelector('header').offsetHeight;
+
 canvas.width = window.innerWidth; // set canvas width to window width
-canvas.height = window.innerHeight; // set canvas height to window height
+canvas.height = window.innerHeight - headerHeight; // set canvas height to window height
 
 let c = canvas.getContext('2d'); // c is the context
 
